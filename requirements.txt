@@ -1,6 +1,7 @@
 streamlit
 langchain
-langchain-community
 langchain-openai
+langchain-community
+langchain-text-splitters
 chromadb
 pysqlite3-binary
