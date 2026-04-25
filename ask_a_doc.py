@@ -22,7 +22,7 @@ def generate response (uploaded_file, openai_api_key, query_text):
         qa=RetrievalQA.from_chain_type(llm=OpenAI(openai_api_key=openai_api_key),chain_type='stuff',retriever=retriever)
         return qa.run(query_text)
 #Page title
-st.set_page_config(page_title=🦜🔗 Ask the Doc App')
+st.set_page_config(page_title='🦜🔗 Ask the Doc App')
 st.title('🦜🔗 Ask the Doc App')
 #File upload
 uploaded_file=st.file_uploader('Upload an article',type='txt')
