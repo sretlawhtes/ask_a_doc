@@ -6,3 +6,4 @@ langchain-text-splitters
 langchain-classic
 chromadb
 pysqlite3-binary
+protobuf
