@@ -9,6 +9,9 @@ from langchain_classic.chains import RetrievalQA
 from langchain_openai import OpenAI, OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 
+if "response" not in st.session_state:
+    st.session_state.response = None
+    
 def generate_response (uploaded_file, openai_api_key, query_text):
     #Load document if file is uploaded
     if uploaded_file is not None:
@@ -39,8 +42,6 @@ with st.form('myform',clear_on_submit=True):
     submitted=st.form_submit_button('Submit',disabled=not(uploaded_file and query_text))
     if submitted and openai_api_key.startswith('sk-'):
         with st.spinner('Calculating...'):
-            response=generate_response(uploaded_file,openai_api_key,query_text)
-            result.append(response)
-            del openai_api_key
-if len(result):
-    st.info(response)
+            st.session_state.response = generate_response(uploaded_file, openai_api_key, query_text)
+if st.session_state.response:
+    st.info(st.session_state.response)
